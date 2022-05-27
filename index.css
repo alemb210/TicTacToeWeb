@@ -1,0 +1,59 @@
+#myHeader
+{
+    background-color: aqua;
+    color: black;
+    font-size: 80px;
+    padding: 40px;
+}
+#main
+{
+    text-align: center;
+}
+
+.flexbox
+{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#flex-container
+{
+    display:flex;
+    background-color:blueviolet;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    flex-wrap: wrap;
+}   
+
+#flex-container > div 
+{
+background-color: crimson;
+width: 100px;
+margin: 10px;   
+font-size: 40px;
+}
+
+#randomtext
+{
+    font-size: 40px;
+    color: midnightblue;
+    position: absolute;
+    left: 80px;
+    top: 400px;
+}
+
+#catgif
+{
+    position: absolute;
+    left: 80px;
+    top: 400px;
+    width: 48px;
+    height: 48px;
+}
+
+
