@@ -77,6 +77,7 @@ function checkWin(sign)
     console.log("Sign: " + sign + "\nBool = " + bool + "\nSizeSq: " + sizeSq)
     for(let x = 0; x <= ((sizeInt - 1) * sizeInt); x = x + sizeInt)
     {
+        bool = true;
         for(let y = x; y <= x + (sizeInt - 1); y++)
         {
             flexId = "flex" + y
@@ -91,15 +92,17 @@ function checkWin(sign)
             alert("Player " + sign + " wins!!!")
         }
     }
-    bool = true
-    for(x = 0; x <= (sizeInt - 1); x++)
+    for(x = 0; x < sizeInt; x++)
     {
-        for(y = x; y < x + ((sizeInt - 1) * sizeInt); y = y + sizeInt)
+        bool = true;
+        for(y = x; y < sizeSq; y = (y + sizeInt))
         {
             flexId = "flex" + y
-            console.log("FlexID: " + flexId + "\nX: " + x + "\nY: " + y)
+            console.log("-----VERTICAL CHECK-----")
+            console.log("FlexID: " + flexId + "\nX: " + x + "\nY: " + y + "\nBool: " + bool + "\nSign: " + sign)
             if(document.getElementById(flexId).innerText != sign)
             {
+                console.log("---COMPARISON FALSE---")
                 bool = false;
             }
         }
@@ -122,6 +125,7 @@ function checkWin(sign)
     {
         alert("Player " + sign + "win!!!")
     }
+    bool = true
     for(x = (sizeInt - 1); x <= sizeInt * (sizeInt - 1); x = x + (sizeInt - 1))
     {
         flexId = "flex" + x
