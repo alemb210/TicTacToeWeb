@@ -59,15 +59,6 @@ function tic(callBox){
     }
     idNum = callBox.getAttribute("id").substring(4)
     checkWin(callBox.innerText)
-    // gameGrid[idNum - 1] = callBox.innerText
-    // for(const condition of winConditions)
-    // {
-    //     if(callBox.innerText == gameGrid[condition[0]] && callBox.innerText == gameGrid[condition[1]] && callBox.innerText == gameGrid[condition[2]])
-    //     {
-    //         alert("Player "+ callBox.innerText + " wins!!")
-    //     }
-    // }
-    // console.log(gameGrid)
 }
 
 function checkWin(sign)
@@ -140,3 +131,43 @@ function checkWin(sign)
         alert("Player " + sign + " wins!!!")
     }
 }
+
+function flipCoin()
+{
+    const coin = document.getElementById("coin")
+    coin.style.animation = ("none")
+    if (Math.random() <= 0.5)
+    {
+        coin.style.animation = "flip-heads 3s forwards";
+    }
+    else
+    {
+        coin.style.animation = "flip-tails 3s forwards";
+    }
+}
+
+function autoMove()
+{
+    let random = parseInt((Math.random() * sizeSq), 10)
+    flexId = "flex" + random
+    console.log("FLEXID: " + flexId)
+    console.log("RANDOM:" + random)
+    if(turn == 0)
+    {
+        document.getElementById(flexId).innerText = "O"
+        turn = 1
+    }
+    else
+    {
+        document.getElementById(flexId).innerText = "X"
+        turn = 0
+    }
+    checkWin(document.getElementById(flexId).innerText)
+}
+/*
+    while(document.getElementById(flexId).innerText != blank)
+    {
+    random = parseInt((Math.random() * sizeSq), 10)
+    flexId = "flex" + random
+    }
+*/
