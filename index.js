@@ -59,6 +59,7 @@ function tic(callBox){
     }
     idNum = callBox.getAttribute("id").substring(4)
     checkWin(callBox.innerText)
+    autoMove(idNum)
 }
 
 function checkWin(sign)
@@ -146,12 +147,53 @@ function flipCoin()
     }
 }
 
-function autoMove()
+function autoMove(idNum)
 {
-    let random = parseInt((Math.random() * sizeSq), 10)
+    let random = parseInt((Math.random() * 8), 10)
+    let hasMoved = false
     flexId = "flex" + random
     console.log("FLEXID: " + flexId)
     console.log("RANDOM:" + random)
+    if(random == 0)
+    {
+        random = idNum - sizeInt - 1
+        flexId = "flex" + random
+    }
+    if(random == 1)
+    {
+        random = idNum - sizeInt
+        flexId = "flex" + random
+    }
+    if(random == 2)
+    {
+        random = idNum - sizeInt + 1
+        flexId = "flex" + random
+    }
+    if(random == 3)
+    {
+        random = idNum - 1
+        flexId = "flex" + random
+    }
+    if(random == 4)
+    {
+        random = idNum + 1
+        flexId = "flex" + random
+    }
+    if(random == 5)
+    {
+        random = idNum + sizeInt - 1
+        flexId = "flex" + random
+    }
+    if(random == 6)
+    {
+        random = idNum + sizeInt
+        flexId = "flex" + random
+    }
+    if(random == 7)
+    {
+        random = idNum + sizeInt + 1
+        flexId = "flex" + random
+    }
     if(turn == 0)
     {
         document.getElementById(flexId).innerText = "O"
