@@ -1,7 +1,7 @@
 #myHeader
 {
-    background-color: aqua;
-    color: black;
+    background-color: #FBEEC1;
+    color: #BC986A;
     font-size: 80px;
     padding: 40px;
 }
@@ -17,107 +17,36 @@
     align-items: center;
 }
 
-
 #flex-container
 {
     display:flex;
-    background-color:blueviolet;
+    background-color: #DAAD86;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     width: 50px;
     height: 50px;
     flex-wrap: wrap;
+    position: absolute;
+    margin-top: 700px;
+    z-index: 1;
 }   
 
 #flex-container > div 
 {
-background-color: crimson;
+background-color:blanchedalmond;
+color:sienna;
 width: 100px;
 margin: 10px;   
 font-size: 40px;
 }
 
-#randomtext
+#instructions
 {
-    font-size: 40px;
-    color: midnightblue;
-    position: absolute;
-    left: 80px;
+    font-size: 25px;
+    position:absolute;
+    left: 0px;
     top: 400px;
+    margin-right: 1100px;
+    z-index: 0;
 }
-
-#catgif
-{
-    position: absolute;
-    left: 80px;
-    top: 400px;
-    width: 48px;
-    height: 48px;
-}
-
-.coinflip
-{
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
-}
-
-#coin {
-    height: 120px;
-    width: 120px;
-    position: relative;
-    margin: 0;
-    transform-style: preserve-3d;
-    position: absolute;
-    right: 80px;
-    top: 400px;
-  }
-  
-  #coin img {
-    width: 120px;
-  }
-  
-  .tails {
-    transform: rotateX(180deg);
-  }
-  
-  .heads,
-  .tails {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-  }
-
-  #flipButton
-  {
-    position: absolute;
-    right: 95px;
-    top: 530px;
-  }
-
-  @keyframes flip-heads {
-    0% {
-      transform: rotateX(0);
-    }
-    100% {
-      transform: rotateX(2520deg)
-    }
-  }
-
-  @keyframes flip-tails {
-    0% {
-      transform: rotateX(0);
-    }
-    100% {
-      transform: rotateX(2340deg)
-    }
-  }
-
-
-
-
