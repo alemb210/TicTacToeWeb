@@ -2,20 +2,22 @@ var gameGrid = []
 var idNum
 var size
 var sizeSq
+var sizeStr
+var sizeInt
 var turn = 0
 var elementNum = 0
 var newElementId
 var blank = "⠀"
 var flexId
-//const winConditions = [[0, 1, 2], [0, 3, 6], [0, 4, 8], [1, 4, 7], [2, 5, 8], [2, 4, 6], [3, 4, 5], [6, 7, 8]]
-
 
 window.onload = (event) =>
 {
     size = prompt("Enter a size")
     sizeSq = size * size
     alert("The size is " + size)
-    let sizeStr = size * 120 + "px"
+    sizeStr = size * 120 + "px"
+    let newSizeStr = size * 220 + "px"
+    sizeInt = parseInt(size)
     document.getElementById("flex-container").style.width = sizeStr
     document.getElementById("flex-container").style.height = sizeStr
     for(let i = 0; i < size * size; i++)
@@ -57,15 +59,16 @@ function tic(callBox){
         callBox.innerText = "X"
         turn = 0
     }
-    idNum = callBox.getAttribute("id").substring(4)
+    idNum = parseInt(callBox.getAttribute("id").substring(4), 10)
     checkWin(callBox.innerText)
-    autoMove(idNum)
+    console.log("Beginning timeout.")
+    setTimeout(function() { console.log("Timeout complete."); }, 1000)
+    setTimeout(function() { autoMove(idNum); }, 1000)
 }
 
 function checkWin(sign)
 {
-    let bool = true
-    let sizeInt = parseInt(size)
+    bool = true
     console.log("Sign: " + sign + "\nBool = " + bool + "\nSizeSq: " + sizeSq)
     for(let x = 0; x <= ((sizeInt - 1) * sizeInt); x = x + sizeInt)
     {
@@ -115,7 +118,7 @@ function checkWin(sign)
     }
     if(bool)
     {
-        alert("Player " + sign + "win!!!")
+        alert("Player " + sign + " wins!!!")
     }
     bool = true
     for(x = (sizeInt - 1); x <= sizeInt * (sizeInt - 1); x = x + (sizeInt - 1))
@@ -133,24 +136,10 @@ function checkWin(sign)
     }
 }
 
-function flipCoin()
-{
-    const coin = document.getElementById("coin")
-    coin.style.animation = ("none")
-    if (Math.random() <= 0.5)
-    {
-        coin.style.animation = "flip-heads 3s forwards";
-    }
-    else
-    {
-        coin.style.animation = "flip-tails 3s forwards";
-    }
-}
-
 function autoMove(idNum)
 {
     let random = parseInt((Math.random() * 8), 10)
-    let hasMoved = false
+    let clickId = "flex" + idNum
     flexId = "flex" + random
     console.log("FLEXID: " + flexId)
     console.log("RANDOM:" + random)
@@ -158,41 +147,59 @@ function autoMove(idNum)
     {
         random = idNum - sizeInt - 1
         flexId = "flex" + random
+        console.log("idNum = " + idNum + "\nrandom = " + random + "\nflexId = " + flexId)
     }
     if(random == 1)
     {
         random = idNum - sizeInt
         flexId = "flex" + random
+        console.log("idNum = " + idNum + "\nrandom = " + random + "\nflexId = " + flexId)
     }
     if(random == 2)
     {
         random = idNum - sizeInt + 1
         flexId = "flex" + random
+        console.log("idNum = " + idNum + "\nrandom = " + random + "\nflexId = " + flexId)
     }
     if(random == 3)
     {
         random = idNum - 1
         flexId = "flex" + random
+        console.log("idNum = " + idNum + "\nrandom = " + random + "\nflexId = " + flexId)
     }
     if(random == 4)
     {
         random = idNum + 1
         flexId = "flex" + random
+        console.log("idNum = " + idNum + "\nrandom = " + random + "\nflexId = " + flexId)
     }
     if(random == 5)
     {
         random = idNum + sizeInt - 1
         flexId = "flex" + random
+        console.log("idNum = " + idNum + "\nrandom = " + random + "\nflexId = " + flexId)
     }
     if(random == 6)
     {
         random = idNum + sizeInt
         flexId = "flex" + random
+        console.log("idNum = " + idNum + "\nrandom = " + random + "\nflexId = " + flexId)
     }
     if(random == 7)
     {
         random = idNum + sizeInt + 1
         flexId = "flex" + random
+        console.log("idNum = " + idNum + "\nrandom = " + random + "\nflexId = " + flexId)
+    }
+    while(random < 0 || random > 24 || document.getElementById(flexId).innerText != blank)
+    {
+    console.log("While loop starting")
+    random = parseInt((Math.random() * sizeSq), 10)
+    flexId = "flex" + random
+    console.log("Occupied space. Retrying with FLEXID: " + flexId + "and RANDOM:" + random)
+    console.log("FLEXID: " + flexId)
+    console.log("RANDOM:" + random)
+    console.log("While loop ending")
     }
     if(turn == 0)
     {
@@ -200,16 +207,9 @@ function autoMove(idNum)
         turn = 1
     }
     else
-    {
+    { 
         document.getElementById(flexId).innerText = "X"
         turn = 0
     }
     checkWin(document.getElementById(flexId).innerText)
 }
-/*
-    while(document.getElementById(flexId).innerText != blank)
-    {
-    random = parseInt((Math.random() * sizeSq), 10)
-    flexId = "flex" + random
-    }
-*/
