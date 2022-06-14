@@ -1,27 +1,54 @@
-<!DOCTYPE html>
-<head>
-    <meta name="viewport" content=
-    "width=device-width, initial-scale=1.0">
+#myHeader
+{
+    background-color: #FBEEC1;
+    color: #BC986A;
+    font-size: 80px;
+    padding: 40px;
+    font-family: "Lucida Console", "Courier New", monospace;
+}
+#main
+{
+    text-align: center;
+}
 
-    <!-- CSS file Included -->
-    <link rel="stylesheet"
-    type="text/css" href="index.css">
+.flexbox
+{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
 
-    <!-- JavaScript file included -->
-    <script src="index.js"></script>
-</head>
-<body>
-    <div id = "main">
-    <h1 id="myHeader">Tic-Tac-Toe</h1>
-    <div class="flexbox">
-        <div id="flex-container"></div>
-    <p id="instructions">
-        Instructions for Tic-Tac-Toe:<br>
-        1. Pick a size for the board. <br>This will determine the length/width of the board (ex. size 5 is a 5x5 board)<br>
-        2. Click in any box to make your move. You will be Player O.<br>
-        3. Wait for the computer, Player X, to move.<br>
-        4. The first player to connect a whole line wins!<br>
-        5. Restart Page to play again :)    
-    </p>
-</body>
-</html>
+#flex-container
+{
+    display:flex;
+    background-color: #DAAD86;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    flex-wrap: wrap;
+    position: absolute;
+    margin-top: 700px;
+    z-index: 1;
+}   
+
+#flex-container > div 
+{
+background-color:blanchedalmond;
+color:sienna;
+width: 100px;
+margin: 10px;   
+font-size: 40px;
+}
+
+#instructions
+{
+    font-size: 20px;
+    position:absolute;
+    left: 0px;
+    top: 400px;
+    margin-right: 1100px;
+    z-index: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
